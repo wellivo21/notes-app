@@ -1,5 +1,3 @@
-'use strict';
-
 // element selectors
 const createNoteSectionEl = document.querySelector('.create-note');
 const titleInputEl = document.querySelector('.title-input');
@@ -7,8 +5,9 @@ const textareaEl = document.querySelector('.note-textarea');
 const charsLeftEl = document.querySelector('.chars-left');
 const createdNotesEl = document.querySelector('.created-notes');
 const noteFormEl = document.querySelector('.note-form');
+const closeBtnEl = document.querySelector('.close-btn');
 
-const eventListeners = () => {
+const formSubmit = () => {
   noteFormEl.addEventListener('submit', (event) => {
     event.preventDefault();
     createNote();
@@ -22,6 +21,7 @@ const eventListeners = () => {
 const charsLeftCount = () => {
   const maxNoteLength = Number(textareaEl.getAttribute('maxlength'));
   charsLeftEl.innerHTML = maxNoteLength;
+
   textareaEl.addEventListener('input', () => {
     const text = textareaEl.value;
     const textLength = maxNoteLength - text.length;
@@ -29,11 +29,15 @@ const charsLeftCount = () => {
   });
 };
 
-const createNote = () => {
+const createNote = async () => {
   const [title, text] = [titleInputEl.value, textareaEl.value];
+  const colors = ['violet', 'green', 'red', 'blue', 'orange'];
 
+  // random number for note background-color
+  const randomNum = Math.floor(Math.random() * colors.length);
   const markup = `
-    <article class="note">
+    <article class="note" style="background-color: ${colors[randomNum]}">
+    <button class="close-btn">X</button>
       <h2 class="note-title">${title}</h2>
       <p class="note-text">
         ${text}
@@ -41,10 +45,18 @@ const createNote = () => {
     </article>
     `;
   createdNotesEl.insertAdjacentHTML('beforeend', markup);
+
+  // adding event to delete notes and eventListener of that note
+  createdNotesEl.addEventListener('click', function (event) {
+    if (event.target.className === 'close-btn') {
+      event.target.closest('.note').remove();
+      this.removeEventListener('click', arguments.callee, false);
+    }
+  });
 };
 
 const init = async () => {
-  eventListeners();
+  formSubmit();
   charsLeftCount();
 };
 
