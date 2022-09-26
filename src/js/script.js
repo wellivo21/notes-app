@@ -15,6 +15,8 @@ const formSubmit = () => {
     // reseting input
     titleInputEl.value = '';
     textareaEl.value = '';
+
+    charsLeftEl.innerHTML = Number(textareaEl.getAttribute('maxlength'));
   });
 };
 
