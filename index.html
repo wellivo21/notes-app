@@ -20,45 +20,33 @@
           button.
         </p>
 
-        <ul class="labels">
-          <li>
-            <label>
-              <span class="label-title">Title</span>
-              <input type="text" />
-            </label>
-          </li>
+        <form class="note-form">
+          <label>
+            <span class="label-title">Title</span>
+            <input type="text" class="title-input" required />
+          </label>
+          <label>
+            <span class="label-title">Note</span>
+            <textarea
+              cols="30"
+              rows="10"
+              class="note-textarea"
+              maxlength="227"
+              required
+            ></textarea>
+            <small class="char-count">
+              <span class="chars-left">%%NUMBER%%</span>
+              characters remaining
+            </small>
+          </label>
 
-          <li>
-            <label>
-              <span class="label-title">Note</span>
-              <textarea cols="30" rows="10"></textarea>
-              <small class='char-count'>
-                <span class='chars-left'>227</span>
-                 characters remaining
-              </small>
-            </label>
-          </li>
-        </ul>
-
-        <button class="btn create-note-btn">Create note</button>
+          <button class="create-note-btn">Create note</button>
+        </form>
       </section>
 
-      <section class="created-notes">
-        <h1 class="hidden">Created Notes</h1>
-        <!-- example of note -->
-        <article class="note">
-            <h2 class="note-title">Note title</h2>
-            <p class="note-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Veritatis inventore, possimus dolor eius sit adipisci consectetur
-              soluta a! Labore illo nam maxime quisquam assumenda eaque
-              blanditiis error, quaerat accusamus officiis?
-            </p>
-        </article>
-      </section>
-
-      
-      </section>
+      <div class="created-notes">
+        <!-- notes go here -->
+      </div>
     </main>
   </body>
 </html>
