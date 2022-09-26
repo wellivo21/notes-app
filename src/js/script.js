@@ -33,10 +33,12 @@ const createNote = async () => {
   const [title, text] = [titleInputEl.value, textareaEl.value];
   const colors = ['violet', 'green', 'red', 'blue', 'orange'];
 
-  // random number for note background-color
-  const randomNum = Math.floor(Math.random() * colors.length);
+  // random number for note background-color and randomRot for note rotation
+  const randomColor = Math.floor(Math.random() * colors.length);
+  const randomRot =
+    Math.ceil(Math.random() * 20) * (Math.round(Math.random()) ? 1 : -1);
   const markup = `
-    <article class="note" style="background-color: ${colors[randomNum]}">
+    <article class="note" style="background-color: ${colors[randomColor]}; rotate: ${randomRot}deg">
     <button class="close-btn">X</button>
       <h2 class="note-title">${title}</h2>
       <p class="note-text">
@@ -50,7 +52,7 @@ const createNote = async () => {
   createdNotesEl.addEventListener('click', function (event) {
     if (event.target.className === 'close-btn') {
       event.target.closest('.note').remove();
-      this.removeEventListener('click', arguments.callee, false);
+      event.target.removeEventListener('click', arguments.callee, false);
     }
   });
 };
