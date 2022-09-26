@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <script defer src="./src/js/script.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="create-note">
+        <h1 class="title">Notes App</h1>
+        <p class="how-to">
+          Here in Notes App you can write and save your note! For that, you just
+          need to fill the blank areas below and click on the "Create Note"
+          button.
+        </p>
+
+        <ul class="labels">
+          <li>
+            <label>
+              <span class="label-title">Title</span>
+              <input type="text" />
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <span class="label-title">Note</span>
+              <textarea cols="30" rows="10"></textarea>
+              <small class='char-count'>
+                <span class='chars-left'>227</span>
+                 characters remaining
+              </small>
+            </label>
+          </li>
+        </ul>
+
+        <button class="btn create-note-btn">Create note</button>
+      </section>
+
+      <section class="created-notes">
+        <h1 class="hidden">Created Notes</h1>
+        <!-- example of note -->
+        <article class="note">
+            <h2 class="note-title">Note title</h2>
+            <p class="note-text">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Veritatis inventore, possimus dolor eius sit adipisci consectetur
+              soluta a! Labore illo nam maxime quisquam assumenda eaque
+              blanditiis error, quaerat accusamus officiis?
+            </p>
+        </article>
+      </section>
+
+      
+      </section>
+    </main>
+  </body>
+</html>
