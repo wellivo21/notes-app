@@ -7,19 +7,6 @@ const createdNotesEl = document.querySelector('.created-notes');
 const noteFormEl = document.querySelector('.note-form');
 const closeBtnEl = document.querySelector('.close-btn');
 
-const formSubmit = () => {
-  noteFormEl.addEventListener('submit', (event) => {
-    event.preventDefault();
-    createNote();
-
-    // reseting input
-    titleInputEl.value = '';
-    textareaEl.value = '';
-
-    charsLeftEl.innerHTML = Number(textareaEl.getAttribute('maxlength'));
-  });
-};
-
 const charsLeftCount = () => {
   const maxNoteLength = Number(textareaEl.getAttribute('maxlength'));
   charsLeftEl.innerHTML = maxNoteLength;
@@ -31,7 +18,7 @@ const charsLeftCount = () => {
   });
 };
 
-const createNote = async () => {
+const createNote = () => {
   const [title, text] = [titleInputEl.value, textareaEl.value];
   const colors = ['violet', 'green', 'red', 'blue', 'orange'];
 
@@ -56,6 +43,19 @@ const createNote = async () => {
       event.target.closest('.note').remove();
       event.target.removeEventListener('click', arguments.callee, false);
     }
+  });
+};
+
+const formSubmit = () => {
+  noteFormEl.addEventListener('submit', (event) => {
+    event.preventDefault();
+    createNote();
+
+    // reseting input
+    titleInputEl.value = '';
+    textareaEl.value = '';
+
+    charsLeftEl.innerHTML = Number(textareaEl.getAttribute('maxlength'));
   });
 };
 
